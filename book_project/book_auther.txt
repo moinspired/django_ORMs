@@ -1,0 +1,67 @@
+#By motuma Ayana
+
+>>> #Successfully create and run the migration files
+>>> #Create 5 books with the following names: C sharp, Java, Python, PHP, Ruby
+>>> Book.objects.create(name="C",desc="About C")
+<Book: Book object>
+>>> Book.objects.create(name="Java",desc="About Java")
+<Book: Book object>
+>>> Book.objects.create(name="Python",desc="About python")
+<Book: Book object>
+>>> Book.objects.create(name="PHP",desc="About PHP")
+<Book: Book object>
+>>> Book.objects.create(name="Ruby",desc="About Ruby")
+<Book: Book object>
+
+ #Create 5 different authors: Mike, Speros, John, Jadee, Jay
+>>> Author.objects.create(first_name="Speros",email="speros@gmail.com")
+<Author: Author object>
+>>> Author.objects.create(first_name="John",email="John@gmail.com")
+<Author: Author object>
+>>> Author.objects.create(first_name="Jadee",email="Jadee@gmail.com")
+<Author: Author object>
+>>> Author.objects.create(first_name="Jay",email="Jay@gmail.com")
+<Author: Author object>
+
+
+#Add a new field in the authors table called 'notes'.  Make this a TextField.  Successfully create and run the migration files.
+
+$  python manage.py makemigrations
+You are trying to add a non-nullable field 'note' to author without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+
+>>> 'making changes'
+Migrations for 'books':
+  apps\books\migrations\0004_author_note.py
+    - Add field note to author
+(djangoEnv)
+
+
+>>> from apps.books.models import *
+>>> #Change the name of the 5th book to C#
+>>> b = Book.objects.get(id=1)
+>>> b.name = 'C#'
+>>> b.save()
+
+
+>>> #Change the first_name of the 5th author to Ketul
+>>> b = Author.objects.first()
+>>> b.first_name = "Ketul"
+>>> b.save()
+
+
+
+>>> #Assign the first author to the first 2 books
+>>> this_book = Book.objects.get(id=1)
+>>> this_author = Author.objects.get(id=1)
+>>> this_author.books.add(this_book)
+>>> this_book = Book.objects.get(id=2)
+>>> this_author = Author.objects.get(id=1)
+>>> this_author.books.add(this_book)
+>>

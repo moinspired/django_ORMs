@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+      {% load static %}
+    </head>
+  <body>
+    <form action="blogs/create" method="post">
+      {% csrf_token %}
+        Blog Name: <input type="text" name="name" placeholder="blog name">
+        Description: <textarea name="desc" placeholder="description"></textarea>
+      <input type="submit" value="submit">
+    </form>
+  </body>
+  <h1>
+    <table>
+      <tr>
+          <th class='col-md-1'>id</th>
+          <th class='col-md-3'>Name</th>
+          <th class='col-md-4'>Description</th>
+          <th class='col-md-2'>Action</th>
+      </tr>
+    {% for blog in blogs %}
+    <tr>
+        <td class='col-md-1'>{{ blog.id }}</th>
+        <td class='col-md-3'>{{ blog.name }} </th>
+        <td class='col-md-4'>{{ blog.desc }}</th>
+        <td class='col-md-2'>id</th>
+    </tr>
+    {% endfor %}
+    </table>
+  </h1>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Courses</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app_main/style.css' %}">
+</head>
+<body>
+    <label>Add a new Course:</label>
+    <form action="/process" method="post">
+        {% csrf_token %}
+        <label>Name:
+            <input type="text" name="name">
+        </label>
+
+        <label>Description:
+            <textarea name="description">
+            </textarea>
+        </label>
+
+        <input type="submit" value="Add">
+    </form>
+
+    <table>
+        <tr>
+            <td>Course Name</td>
+            <td>Description</td>
+            <td>Date Added</td>
+            <td>Actions</td>
+        </tr>
+
+        {% for course in courses %}
+            <tr>
+                <td>{{course.name}}</td>
+                <td>{{course.description.text}}</td>
+                <td>{{course.created_at}}</td>
+                <td>
+                    <a href="/courses/destroy/{{course.id}}">
+                        remove
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

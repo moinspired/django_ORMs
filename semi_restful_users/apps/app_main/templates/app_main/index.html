@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Users Index</title>
+    {% load staticfiles %}
+  </head>
+  <style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #e6f9ff;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color:#e6f9ff;
+    }
+  </style>
+  <body>
+    <h1>Users</h1>
+    <table>
+      <tr>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Created_AT</th>
+        <th>Action</th>
+        <th></th>
+        <th></th>
+      </tr>
+      {% for user in users %}
+      <tr>
+          <td>{{user.first_name}} {{user.last_name}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.created_at}}</td>
+
+          <td><a href="user/{{user.id}}" >Show</a></td>
+          <td><a href="user/{{user.id}}/edit" >Edit</a></td>
+          <td><a href="user/{{user.id}}/delete" >Delete</a></td>
+      </tr>
+     {% endfor %}
+
+      <a href="user/new"> Add a new user</a>
+    </table>
+  </body>
+</html>
+<!-- <body>
+  <form action="new" method="post">
+    {% csrf_token %}
+    First name:<br>
+    <input type="text" name="firstname">
+    <br>
+    Last name:<br>
+    <input type="text" name="lastname">
+    <br>
+    Email:<br>
+    <input type="text" name="email">
+    <br><br>
+    <input type="submit" value="Create">
+  </form>
+  <a href="/">Go Back</a>
+</body> -->

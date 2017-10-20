@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Users Index</title>
+    {% load staticfiles %}
+  </head>
+  <body>
+    <h1>Users {{user.id}}</h1>
+    <p>Full Name: {{user.first_name}} {{user.last_name}}</p>
+    <p>Email: {{user.email}}</p>
+    <p>Created at: {{user.created_at}}</p>
+    <a href="user/{{id}}"> Edit</a>
+    <a href=""> Delet</a>
+    </table>
+  </body>
+</html>

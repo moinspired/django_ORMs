@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Users New</title>
+    {% load staticfiles %}
+  </head>
+    <body>
+      <h1>Polls</h1>
+      <h3>Registration</h3>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+      <form action='/users/new' method="post">
+          {% csrf_token %}
+          Username: <input type="text" name="username"><br>
+          Password: <input type="password" name="password"><br>
+          Confirm Password: <input type="password" name="confirm"><br>
+          <input type="submit" value="Register">
+      </form>
+
+
+      <h3>Login</h3>
+      <div>
+      <form action='session/new' method="post">
+        {% csrf_token %}
+        Username: <input type="text" name="username"><br>
+        Password: <input type="password" name="password"><br>
+        <input type="submit" value="Login">
+      </form>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <title>Users New</title>
+    {% load staticfiles %}
+    </head>
+    <body>
+       {{ poll }}
+       <h3>{{ poll.question }}</h3>
+       {% if not voted %}
+       <form action="/vote/{{ poll.id }}" method = "post">
+        {% csrf_token %}
+        <input type="radio" name="sellection" value="1"> {{ poll.option1 }} <br>
+        <input type="radio" name="sellection" value="2"> {{ poll.option2 }} <br>
+        <input type="radio" name="sellection" value="3"> {{ poll.option3 }} <br>
+        <input type="submit" value="Vote">
+        {% else %}
+        <p>You already voted</p>
+        {{ poll.votes.all.0.selection}}
+
+        {{results}}
+        {% endif %}
+        </form>
+    </body>
+</html>

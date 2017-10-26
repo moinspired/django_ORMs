@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dates</title>
+</head>
+<body>
+<h1>Dates</h1>
+
+<ul>
+	{% for birthday in birthdays %}
+		<li>{{ birthday.dob }}</li>
+	{% endfor %}
+</ul>
+
+<form action="/process" method="post">
+	{% csrf_token %}
+	<input type="date" name="date">
+	<input type="submit" value="new day">
+</form>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Users New</title>
+    {% load staticfiles %}
+  </head>
+  <style>
+    input {
+        display: block;
+      }
+    </style>
+<body>
+  <h3>Registration</h3>
+  <div>
+    <form action='/localhost/books/{{user.id}}' method="post">
+      {% csrf_token %}
+    <label for="title">Book Title</label>
+    <input type="text"  name="title">
+    <br>
+    <label for=new_author>Choose from the list</label>
+    <select name="carlist" form="carform">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="opel">Opel</option>
+        <option value="audi">Audi</option>
+    </select>
+    <br>
+    <label for=new_author>Or add a new autho</label>
+    <input type="text" name="password">
+    <br>
+    <label for=new_author>Review:</label>
+    <textarea type="text" name="comment"></textarea>
+
+
+    <label for=new_author>Choose from the list</label>
+    <select name="carlist" form="carform">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="opel">Opel</option>
+        <option value="audi">Audi</option>
+    </select>
+
+    <br><br>
+    <input type="submit" value="Add Book and Review">
+    </form>
+
+  </div>
+</body>
+</html>

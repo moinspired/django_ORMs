@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 from django.shortcuts import render,redirect
-from .models import Course,Description
+from .models import Course
 
 def index(request):
     ctx = {'courses':Course.objects.all()}

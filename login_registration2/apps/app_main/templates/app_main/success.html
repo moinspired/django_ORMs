@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Success</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app_main/style.css' %}">
+</head>
+<body>
+   Wellcome {{request.session.first_name}}
+</body>
+</html>

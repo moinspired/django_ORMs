@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Users New</title>
+    {% load staticfiles %}
+  </head>
+<body>
+    <p>Welcome, {{request.session.first_name}}</p>
+    <a href="/books/add">Add a book and review</a>
+</body>
+</html>

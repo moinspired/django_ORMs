@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Users Index</title>
+    {% load staticfiles %}
+  </head>
+  <style>
+  </style>
+  <body>
+    <header>
+      <p><a href="/logout">Logout</a></p>
+    </header>
+    <h2>Welcome {{request.session.username}}!</h2>
+    <p>Your Trip Schedules</p>
+    <table border=1>
+      <tr>
+        <th>Destination</th>
+        <th>Travel Start Date</th>
+        <th>Travel End Date</th>
+        <th>Plan</th>
+      </tr>
+
+     {% for join in joins %}
+     
+      <tr>
+          <td><a href="/destination/{{join.trip.id}}">{{join.trip.destination}}</a></td>
+          <td>{{join.trip.start_date}}</td>
+          <td>{{join.trip.end_date}}</td>
+          <td>{{join.trip.description}}</td>
+      </tr>
+     {% endfor %}
+ 
+    </table>
+    <br><br>
+
+    <p>Other User's Travel Plans</p>
+    <table border=1>
+        <tr>
+            <th>Name</th>
+            <th>Destination</th>
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Do you want to Join</th>
+        </tr>
+        {% for trip in excluded_trips %} 
+          <tr>
+              <td>{{trip.user.username}}</td>
+              <td><a href="/destination/{{trip.id}}">{{trip.destination}}</a></td>
+              <td>{{trip.start_date}}</td>
+              <td>{{trip.end_date}}</td>
+              <td><a href="/join/{{trip.id}}">join</a></td>
+          </tr>
+        {% endfor %}
+    </table><br>
+    <a href="/add">Add Travel Plan</a>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Users New</title>
+    {% load staticfiles %}
+  </head>
+    <body>
+        {{ request.session.user }}
+        
+        {{ votes }}
+        <table border=1>
+            <tr>
+                <th>Question</th>
+                <th>Option1</th>
+                <th>Option2</th>
+                <th>Option3</th>
+                <th>creator</th>
+                <th>vote</th>
+            </tr>
+            {% for poll in polls %}
+                <tr>
+                    <td>{{ poll.Question}}</td>
+                    <td>{{ poll.option1}}</td>
+                    <td>{{ poll.option2}}</td>
+                    <td>{{ poll.option3}}</td>
+                    <td>{{ poll.creator.username}}</td>
+                    <th><a href="/vote/{{ poll.id}}">vote</a></th>   
+                </tr>
+            {% endfor %}
+        </table>
+        <a href='/polls/new'><button>Make a Poll</button></a>
+    </body>
+</html>
